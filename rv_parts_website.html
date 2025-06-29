@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV Parts Brasil - Peças para Autocaravanas e Mobile Homes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #C6652F;
+            --secondary-color: #8B4513;
+            --accent-color: #D4A574;
+            --neutral-light: #F5F1EB;
+            --neutral-dark: #3E2723;
+            --text-dark: #2C1810;
+            --text-light: #6B4E37;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #C6652F 0%, #8B4513 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--neutral-light);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.3), rgba(198, 101, 47, 0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23D4A574" width="1920" height="1080"/><circle fill="%23C6652F" opacity="0.1" cx="960" cy="540" r="400"/></svg>') center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            background: var(--neutral-light);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5% 4rem;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--neutral-light);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(198, 101, 47, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 5%;
+            background: var(--neutral-light);
+        }
+
+        /* Catalog Navigation */
+        .catalog-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        .nav-tab:hover,
+        .nav-tab.active {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(198, 101, 47, 0.3);
+        }
+
+        /* Product Catalog Container */
+        .catalog-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        /* Filters Sidebar */
+        .catalog-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .filters-sidebar {
+            background: var(--neutral-light);
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            border: 1px solid #E0D5C7;
+        }
+
+        .filter-section {
+            border-bottom: 1px solid #E0D5C7;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .filter-header {
+            background: var(--accent-color);
+            padding: 1.5rem 1.5rem 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .filter-header:not(:first-child) {
+            border-radius: 0;
+        }
+
+        /* Chassis Section */
+        .chassis-section {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .chassis-category {
+            margin-bottom: 0.8rem;
+        }
+
+        .chassis-link {
+            color: #2563EB;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+        }
+
+        .chassis-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Type Section */
+        .type-section {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .type-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            transition: background-color 0.2s ease;
+            border-radius: 5px;
+        }
+
+        .filter-option:hover {
+            background-color: var(--white);
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .filter-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #E0D5C7;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-checkbox input {
+            display: none;
+        }
+
+        .filter-checkbox input:checked + .checkmark {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .filter-checkbox input:checked + .checkmark::after {
+            content: '✓';
+            color: var(--white);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .filter-label {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .filter-count {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--white);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .show-more {
+            color: #2563EB;
+            font-size: 0.95rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .show-more:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Products Grid */
+        .products-container {
+            min-height: 400px;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .products-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .results-info {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #E0D5C7;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--neutral-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #E0D5C7;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 180px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            overflow: hidden;
+            border-bottom: 1px solid #E0D5C7;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: var(--white);
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .product-placeholder i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-button, .ver-tudo-btn {
+            width: 100%;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .product-button:hover, .ver-tudo-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(198, 101, 47, 0.3);
+        }
+
+        /* Category Highlight Section */
+        .category-highlight {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .category-highlight-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .category-highlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-highlight h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .category-highlight p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .catalog-content {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .catalog-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-sidebar {
+                order: 2;
+                margin-top: 2rem;
+            }
+            
+            .products-container {
+                order: 1;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .catalog-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-highlight {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--neutral-light);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(198, 101, 47, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--neutral-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .features,
+            .products,
+            .contact {
+                padding: 4rem 1rem;
+            }
+
+            .features-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-rv"></i>
+                RV Parts Brasil
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Peças para RV, Caravanas, Mobile Homes e Autocaravanas</h1>
+            <p>Descubra a melhor seleção de peças do mercado. Trabalhamos com os melhores fabricantes do mundo para poder levar de forma prática a melhor qualidade para nosso cliente.</p>
+            <a href="#produtos" class="cta-button">
+                <i class="fas fa-search"></i> Ver Catálogo
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="servicos">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <h2>Por que escolher a RV Parts Brasil?</h2>
+                <p>Somos especialistas em fornecer soluções completas para sua casa sobre rodas</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Fabricantes Mundiais</h3>
+                    <p>Trabalhamos diretamente com os melhores fabricantes do mundo, garantindo qualidade internacional em cada produto.</p>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Sistema logístico otimizado para entregar suas peças onde você estiver, com agilidade e segurança.</p>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Suporte Técnico</h3>
+                    <p>Equipe especializada para auxiliar na escolha das peças certas e orientações técnicas especializadas.</p>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Garantia de Qualidade</h3>
+                    <p>Todas as peças com garantia e certificação internacional, assegurando durabilidade e performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="produtos">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <h2>Suporte de Chassi</h2>
+                <p>Equipamentos especializados para fixação, estabilização e suporte de chassis para RVs e autocaravanas</p>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="catalog-nav scroll-animate">
+                <a href="#" class="nav-tab active" data-tab="chassi">Suporte de Chassi</a>
+            </div>
+
+            <!-- Suporte de Chassi Tab -->
+            <div id="chassi-tab" class="tab-content active">
+                <!-- Category Highlight -->
+                <div class="category-highlight scroll-animate">
+                    <div class="category-highlight-image">
+                        <i class="fas fa-compress-arrows-alt" style="font-size: 4rem; color: var(--primary-color);"></i>
+                    </div>
+                    <h3>Suporte de Chassi</h3>
+                    <p>Não importa se você está se estabelecendo pela primeira vez ou se está se mudando, temos o equipamento necessário para tornar o processo mais tranquilo. Suportes, âncoras e sistemas de fixação profissionais.</p>
+                    <a href="#catalog-chassi" class="ver-tudo-btn">Ver tudo</a>
+                </div>
+
+                <!-- Catalog with Filters -->
+                <div class="catalog-container scroll-animate" id="catalog-chassi">
+                    <div class="catalog-content">
+                        <!-- Filters Sidebar -->
+                        <aside class="filters-sidebar">
+                            <!-- Filter Header -->
+                            <div class="filter-section">
+                                <div class="filter-header">
+                                    Filtrar por
+                                </div>
+                            </div>
+
+                            <!-- Chassis Section -->
+                            <div class="filter-section">
+                                <div class="chassis-section">
+                                    <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 1rem;">Suporte de chassi</h3>
+                                    <div class="chassis-category">
+                                        <a href="#" class="chassis-link">Peças de reposição para chassi</a>
+                                    </div>
+                                    <div class="chassis-category">
+                                        <a href="#" class="chassis-link">Suporte de chassi e corrente para baixo</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Type Section -->
+                            <div class="filter-section">
+                                <div class="type-section">
+                                    <h3 class="type-header">Tipo</h3>
+                                    <div class="filter-options">
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="encadeamento">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Encadeamento</span>
+                                            <span class="filter-count">14</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="suportes-chassi">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Suportes de Chassi</span>
+                                            <span class="filter-count">13</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="equipamento-localizacao">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Equipamento de localização</span>
+                                            <span class="filter-count">10</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="pernas-suporte">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Pernas de suporte</span>
+                                            <span class="filter-count">8</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="suportes-chassi-2">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Suportes de Chassi</span>
+                                            <span class="filter-count">5</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="rolamentos-roda">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Rolamentos de roda</span>
+                                            <span class="filter-count">5</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="correntes-ancora">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Correntes de Âncora</span>
+                                            <span class="filter-count">4</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="algemas-ancora">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Algemas de Âncora</span>
+                                            <span class="filter-count">4</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="acoplamentos">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Acoplamentos</span>
+                                            <span class="filter-count">3</span>
+                                        </label>
+
+                                        <label class="filter-option">
+                                            <div class="filter-checkbox">
+                                                <input type="checkbox" id="barras-tracao">
+                                                <span class="checkmark"></span>
+                                            </div>
+                                            <span class="filter-label">Barras de tração</span>
+                                            <span class="filter-count">3</span>
+                                        </label>
+                                    </div>
+                                    <a href="#" class="show-more">Mostrar mais</a>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <!-- Products Container -->
+                        <main class="products-container">
+                            <div class="products-header">
+                                <div>
+                                    <h3 class="products-title">Peças para Suporte de Chassi</h3>
+                                    <p class="results-info">68 produtos encontrados</p>
+                                </div>
+                                <div class="sort-options">
+                                    <label for="sort">Ordenar por:</label>
+                                    <select id="sort" class="sort-select">
+                                        <option value="relevance">Relevância</option>
+                                        <option value="price-low">Menor preço</option>
+                                        <option value="price-high">Maior preço</option>
+                                        <option value="newest">Mais recente</option>
+                                        <option value="popular">Mais vendido</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="products-grid">
+                                <!-- Âncora Expansiva Premium (Imagem 1) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-anchor"></i>
+                                            <span>Imagem 1: Âncora Expansiva Premium</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Âncora Expansiva Premium M10 Dourada</h4>
+                                        <p class="product-description">Âncora expansiva premium com revestimento especial dourado/bronze. Alta resistência à corrosão.</p>
+                                        <div class="product-price">R$ 69,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Âncora Expansiva Galvanizada (Imagem 2) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-anchor"></i>
+                                            <span>Imagem 2: Âncora Expansiva Galvanizada</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Âncora Expansiva M10 Galvanizada</h4>
+                                        <p class="product-description">Âncora expansiva galvanizada M10 com olhal para fixação em concreto. Furo de 16mm.</p>
+                                        <div class="product-price">R$ 49,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Esticador Olhal-Olhal (Imagem 3) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-tools"></i>
+                                            <span>Imagem 3: Esticador Olhal-Olhal</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Esticador Olhal-Olhal Galvanizado</h4>
+                                        <p class="product-description">Esticador galvanizado com olhal nas duas extremidades. Ajuste de tensão preciso e seguro.</p>
+                                        <div class="product-price">R$ 89,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Esticador Gancho-Olhal (Imagem 5) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-tools"></i>
+                                            <span>Imagem 5: Esticador Gancho-Olhal</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Esticador Gancho-Olhal Galvanizado</h4>
+                                        <p class="product-description">Esticador galvanizado com gancho e olhal. Ideal para ajuste de correntes de ancoragem.</p>
+                                        <div class="product-price">R$ 79,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Âncora Tipo Parafuso (Imagem 7) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-cog"></i>
+                                            <span>Imagem 7: Âncora Tipo Parafuso</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Âncora Tipo Parafuso para Solo</h4>
+                                        <p class="product-description">Âncora parafuso galvanizada para fixação em solo. Fácil instalação girando no sentido horário.</p>
+                                        <div class="product-price">R$ 159,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Estaca Âncora Reta (Imagem 8) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-ruler"></i>
+                                            <span>Imagem 8: Estaca Âncora Reta</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Estaca Âncora Reta Galvanizada 76cm</h4>
+                                        <p class="product-description">Estaca âncora reta galvanizada 30" (76cm) com furo para manilha. Ideal para solo firme.</p>
+                                        <div class="product-price">R$ 119,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Parafuso U (Imagem 9) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-magnet"></i>
+                                            <span>Imagem 9: Parafuso U</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Parafuso U Galvanizado</h4>
+                                        <p class="product-description">Parafuso U para fixação em base de concreto. Comprimento 150mm, largura interna 52mm.</p>
+                                        <div class="product-price">R$ 69,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Âncora Expansiva Premium Dourada (Imagem 10) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-star"></i>
+                                            <span>Imagem 10: Âncora Premium Dourada</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Âncora Expansiva Premium Dourada</h4>
+                                        <p class="product-description">Âncora expansiva premium com acabamento dourado especial. Máxima resistência e durabilidade.</p>
+                                        <div class="product-price">R$ 79,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Manilha D (Imagem 12) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-link"></i>
+                                            <span>Imagem 12: Manilha D</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Manilha D Galvanizada 8mm</h4>
+                                        <p class="product-description">Manilha D galvanizada 8mm para conexões seguras. Resistência de ruptura testada e certificada.</p>
+                                        <div class="product-price">R$ 29,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Corrente Galvanizada (Imagem 13) -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-chain"></i>
+                                            <span>Imagem 13: Corrente Galvanizada</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Corrente Galvanizada 7mm x 1 Metro</h4>
+                                        <p class="product-description">Corrente galvanizada elo longo 7mm. Resistência de ruptura aprox. 1900kg. Vendida por metro.</p>
+                                        <div class="product-price">R$ 89,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Kits Completos -->
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-box"></i>
+                                            <span>Kit Completo para Concreto</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Kit Completo de Encadeamento para Concreto</h4>
+                                        <p class="product-description">Kit inclui: 4x Âncoras M10, 4x Esticadores, 4x Manilhas D 8mm, 4x Correntes 1m x 7mm</p>
+                                        <div class="product-price">R$ 589,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <div class="product-placeholder">
+                                            <i class="fas fa-tools"></i>
+                                            <span>Kit Completo para Solo</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">Kit de Encadeamento para Solo/Areia</h4>
+                                        <p class="product-description">Kit para solo: 4x Âncoras Parafuso, 4x Esticadores, 4x Manilhas D 8mm, 4x Correntes 1m</p>
+                                        <div class="product-price">R$ 649,90</div>
+                                        <button class="product-button">
+                                            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+                                        </button>
+                                    </div>
+                                </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info scroll-animate">
+                    <h2>Entre em Contato</h2>
+                    <p>Estamos aqui para ajudar você a encontrar exatamente o que precisa para sua casa sobre rodas. Nossa equipe especializada está pronta para atendê-lo.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(11) 99999-9999</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contato@rvpartsbrasil.com.br</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>São Paulo, SP - Brasil</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Seg-Sex: 8h às 18h | Sáb: 8h às 12h</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form scroll-animate">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1.5rem;">Solicite um Orçamento</h3>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva as peças que você precisa..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="sobre">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RV Parts Brasil</h3>
+                    <p>Sua referência em peças e acessórios para veículos recreativos. Qualidade internacional, atendimento nacional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <p><a href="#inicio">Início</a></p>
+                    <p><a href="#produtos">Produtos</a></p>
+                    <p><a href="#servicos">Serviços</a></p>
+                    <p><a href="#contato">Contato</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <p><a href="#">Sistema Elétrico</a></p>
+                    <p><a href="#">Sistema Hidráulico</a></p>
+                    <p><a href="#">Climatização</a></p>
+                    <p><a href="#">Móveis e Acessórios</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Atendimento</h3>
+                    <p>Segunda a Sexta: 8h às 18h</p>
+                    <p>Sábado: 8h às 12h</p>
+                    <p>Domingo: Fechado</p>
+                    <p><strong>(11) 99999-9999</strong></p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--text-light); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 RV Parts Brasil. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#FFFFFF';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.nome || !data.email || !data.mensagem) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.feature-card, .product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Tab functionality (simplificado para uma categoria)
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Como só temos uma categoria, mantém ativa
+                this.classList.add('active');
+            });
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-checkbox input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                filterProducts();
+            });
+        });
+
+        // Sort functionality
+        const sortSelect = document.getElementById('sort');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', function() {
+                filterProducts();
+            });
+        }
+
+        // Filter products function
+        function filterProducts() {
+            const productsGrid = document.querySelector('#chassi-tab .products-grid');
+            if (!productsGrid) return;
+
+            // Show loading simulation
+            productsGrid.style.opacity = '0.5';
+
+            // Simulate filtering delay
+            setTimeout(() => {
+                productsGrid.style.opacity = '1';
+                
+                // Update results count
+                const checkedFilters = document.querySelectorAll('.filter-checkbox input:checked').length;
+                const resultsInfo = document.querySelector('.results-info');
+                if (resultsInfo) {
+                    const newCount = Math.max(1, 68 - (checkedFilters * 8));
+                    resultsInfo.textContent = `${newCount} produtos encontrados`;
+                }
+            }, 500);
+        }
+
+        // Show more functionality
+        const showMoreLink = document.querySelector('.show-more');
+        if (showMoreLink) {
+            showMoreLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add more filter options
+                const moreOptions = `
+                    <label class="filter-option">
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="parafusos">
+                            <span class="checkmark"></span>
+                        </div>
+                        <span class="filter-label">Parafusos e fixadores</span>
+                        <span class="filter-count">2</span>
+                    </label>
+                    <label class="filter-option">
+                        <div class="filter-checkbox">
+                            <input type="checkbox" id="buchas">
+                            <span class="checkmark"></span>
+                        </div>
+                        <span class="filter-label">Buchas de chassi</span>
+                        <span class="filter-count">1</span>
+                    </label>
+                `;
+                
+                const filterOptions = document.querySelector('.filter-options');
+                filterOptions.insertAdjacentHTML('beforeend', moreOptions);
+                
+                // Hide show more link
+                this.style.display = 'none';
+                
+                // Add event listeners to new checkboxes
+                const newCheckboxes = filterOptions.querySelectorAll('input[type="checkbox"]:not([data-initialized])');
+                newCheckboxes.forEach(checkbox => {
+                    checkbox.setAttribute('data-initialized', 'true');
+                    checkbox.addEventListener('change', filterProducts);
+                });
+            });
+        }
+
+        // Product button interactions
+        document.querySelectorAll('.product-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+                this.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.background = '';
+                }, 2000);
+            });
+        });
+
+        // Load product images from uploaded files
+        async function loadProductImages() {
+            const imageMapping = {
+                'Âncora Expansiva M10 com Olhal': 'image-2.jpg',
+                'Esticador Olhal-Olhal Galvanizado': 'image-3.jpg', 
+                'Esticador Gancho-Olhal Galvanizado': 'image-5.jpg',
+                'Âncora Tipo Parafuso para Solo': 'image-7.jpg',
+                'Estaca Âncora Reta Galvanizada 76cm': 'image-8.jpg',
+                'Parafuso U Galvanizado': 'image-9.jpg',
+                'Manilha D Galvanizada 8mm': 'image-12.jpg',
+                'Corrente Galvanizada 7mm x 1 Metro': 'image-13.jpg',
+                'Âncora Expansiva Premium M10': 'image-1.jpg'
+            };
+
+            // Try to load images from uploaded files
+            for (const [productTitle, filename] of Object.entries(imageMapping)) {
+                try {
+                    const productCard = Array.from(document.querySelectorAll('.product-title'))
+                        .find(title => title.textContent.includes(productTitle.split(' ')[0]))?.closest('.product-card');
+                    
+                    if (productCard) {
+                        const img = productCard.querySelector('.product-image img');
+                        if (img && window.fs && window.fs.readFile) {
+                            try {
+                                const imageData = await window.fs.readFile(filename);
+                                const blob = new Blob([imageData], { type: 'image/jpeg' });
+                                const imageUrl = URL.createObjectURL(blob);
+                                img.src = imageUrl;
+                                img.style.display = 'block';
+                            } catch (e) {
+                                // If file not found, keep placeholder
+                                console.log(`Image ${filename} not found`);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.log('Error loading image:', error);
+                }
+            }
+        }
+
+        // Call image loading function when page loads
+        window.addEventListener('load', function() {
+            setTimeout(loadProductImages, 1000);
+        });
+
+        // Smooth scroll for "Ver tudo" button
+        document.querySelectorAll('.ver-tudo-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Chassis link functionality
+        document.querySelectorAll('.chassis-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Simulate filtering by category
+                filterProducts();
+                
+                // Update header
+                const productsTitle = document.querySelector('.products-title');
+                if (productsTitle) {
+                    productsTitle.textContent = this.textContent;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
